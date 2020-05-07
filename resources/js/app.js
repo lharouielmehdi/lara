@@ -19,10 +19,11 @@ let routes = [
     },
     {
         path: "/Pofile-User",
-        component: require("./components/Pofile-User.vue")
+        component: require("./components/Pofile-User.vue").default
     }
 ];
 const router = new VueRouter({
+    mode: "history",
     routes // short for `routes: routes`
 });
 
@@ -49,6 +50,5 @@ Vue.component(
  */
 
 const app = new Vue({
-    el: "#app",
     router
-});
+}).$mount("#app");

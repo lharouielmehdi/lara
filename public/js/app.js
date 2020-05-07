@@ -2002,6 +2002,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    username: function username() {
+      // We will see what `params` is shortly
+      return this.$route.params.username;
+    }
+  },
   mounted: function mounted() {
     console.log("Component mounted.");
   }
@@ -37755,7 +37761,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v("hello in profile user")
+              _vm._v("helo in our contry")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
@@ -52891,9 +52897,10 @@ var routes = [{
   component: __webpack_require__(/*! ./components/Dashbor-d.vue */ "./resources/js/components/Dashbor-d.vue")["default"]
 }, {
   path: "/Pofile-User",
-  component: __webpack_require__(/*! ./components/Pofile-User.vue */ "./resources/js/components/Pofile-User.vue")
+  component: __webpack_require__(/*! ./components/Pofile-User.vue */ "./resources/js/components/Pofile-User.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  mode: "history",
   routes: routes // short for `routes: routes`
 
 });
@@ -52915,9 +52922,8 @@ Vue.component("example-component", __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: "#app",
   router: router
-});
+}).$mount("#app");
 
 /***/ }),
 

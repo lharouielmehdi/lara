@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">hello in profile user</div>
+          <div class="card-header">helo in our contry</div>
 
           <div class="card-body">I'm an example component.</div>
         </div>
@@ -14,6 +14,13 @@
 
 <script>
 export default {
+  computed: {
+    username() {
+      // We will see what `params` is shortly
+      return this.$route.params.username;
+    }
+  },
+
   mounted() {
     console.log("Component mounted.");
   }
