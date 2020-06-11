@@ -28,28 +28,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+
+      <div class="input-group input-group-sm" >
+        <input class="form-control form-control-navbar" @keyup="searchit" v-model="search" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
+          <button class="btn btn-navbar"  @click="searchit">
             <i class="fas fa-search"></i>
           </button>
         </div>
       </div>
-    </form>
+
 
 
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar elevation-5 " >
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="./img/user.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="./img/user.png" alt="lHAroui" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text" style="color: #343a40;">trip porject</span>
     </a>
 
     <!-- Sidebar -->
@@ -57,11 +57,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./img/user.png" class="img-circle elevation-2" alt="User Image">
+          <img src="./img/user.png" class="img-circle elevation-2" alt="elmehdi">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-        </div>
+            <span class="brand-text" style="color: #343a40;">{{ Auth::user()->name }}</span>
+            <p>{{ Auth::user()->type }}</p>
+            </div>
+
       </div>
 
       <!-- Sidebar Menu -->
@@ -78,6 +80,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </router-link>
               </li>
+
+              @can('isAdmin')
+
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog green"></i>
@@ -88,25 +93,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
+                <router-link to="/users" class="nav-link">
+                  <i class="nav-icon fas fa-users orang"></i>
+                  <p>utilisateurs</p>
+                </router-link>
               </li>
+
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inactive Page</p>
                 </a>
               </li>
+
             </ul>
           </li>
+          @endcan
           <li class="nav-item">
             <router-link to="/Pofile-User" class="nav-link">
               <i class="nav-icon fas fa-user orang "></i>
               <p>
                 profile
 
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/add_post" class="nav-link">
+              <i class="nav-icon fas fa-align-justify teal "></i>
+              <p>
+                Add Request
+
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/Request" class="nav-link">
+              <i class="nav-icon fas fa-car teal "></i>
+              <p>
+                request's
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/add_offer" class="nav-link">
+              <i class="nav-icon fas fa-car purple "></i>
+              <p>
+                Add Offer
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/offers" class="nav-link">
+              <i class="nav-icon fas fa-align-justify purple "></i>
+              <p>
+                 Offer's
               </p>
             </router-link>
           </li>
@@ -138,8 +179,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <router-view></router-view>
+        <vue-progress-bar></vue-progress-bar>
 
+        <router-view></router-view>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -159,8 +201,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
-
+@auth
+<script>
+    window.user=@JSON(auth()->user())
+    </script>
+@endauth
 <!-- AdminLTE App -->
 <script src="/js/app.js"></script>
 </body>

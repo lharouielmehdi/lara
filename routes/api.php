@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResources(['user' => 'API\UserController']);
+Route::get('profile','API\UserController@profile');
+Route::put('profile','API\UserController@updateProfile');
+Route::get('search','API\UserController@searchit');
+Route::apiResources(['post' => 'API\UserPosts']);
+Route::get('detail','API\UserPosts@detail');
+Route::apiResources(['offer'=>'API\OfferController']);
+
+
+
